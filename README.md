@@ -80,6 +80,13 @@ graph TD
     LLaMA --> Watcher
     Watcher --> Controller
     Controller --> FrontendUpdate
+
+    classDef startStyle stroke:#333,stroke-width:2px;
+    class UserInput,UserInput-MidJourney startStyle;
+    classDef processStyle stroke:#333,stroke-width:2px;
+    class LLaMA(Model1),Watcher(Model2),Controller(Model3) processStyle;
+    classDef endStyle stroke:#333,stroke-width:2px;
+    class FrontendUpdate endStyle;
 ```
 
 > The DFD visualizes the flow of data and interactions between the user, AI models, and project files across the two scenarios.
