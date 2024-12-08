@@ -66,32 +66,39 @@ The architecture combines three AI models:
 
 ```mermaid
 graph TD
-    subgraph Scenario1 [Scenario 1]
+    subgraph Scenario1 [Initial Prompt]
         UserInputInitial --> LLaMAModel1
         LLaMAModel1 --> WatcherModel2
         WatcherModel2 --> LLaMAModel1
         LLaMAModel1 --> WatcherModel2
         WatcherModel2 --> ControllerModel3
-        ControllerModel3 --> FrontendUpdate
+        ControllerModel3 --> Update
     end
 
-    subgraph Scenario2 [Scenario 2]
-        UserInputMidJourney --> LLaMAModel1
-        LLaMAModel1 --> ControllerModel3
-        ControllerModel3 --> WatcherModel2
-        WatcherModel2 --> LLaMAModel1
-        LLaMAModel1 --> WatcherModel2
-        WatcherModel2 --> ControllerModel3
-        ControllerModel3 --> FrontendUpdate
+    subgraph Scenario2 [Mid-Journey Prompt]
+        UserInputMidJourney --> LLaMA
+        LLaMA --> Controller
+        Controller --> Watcher
+        Watcher --> LLaMA
+        LLaMA --> Watcher
+        Watcher --> Controller
+        Controller --> Update
     end
 
     classDef startStyle stroke:#333,stroke-width:2px;
     class UserInputInitial,UserInputMidJourney startStyle;
-    classDef processStyle stroke:#333,stroke-width:2px;
-    class LLaMAModel1,WatcherModel2,ControllerModel3 processStyle;
-    classDef endStyle stroke:#333,stroke-width:2px;
-    class FrontendUpdate endStyle;
 
+    classDef llamaStyle fill:#f9f,stroke:#333,stroke-width:2px;
+    class LLaMAModel1,LLaMA llamaStyle;
+
+    classDef watcherStyle fill:#bbf,stroke:#333,stroke-width:2px;
+    class WatcherModel2,Watcher watcherStyle;
+
+    classDef controllerStyle fill:#bff,stroke:#333,stroke-width:2px;
+    class ControllerModel3,Controller controllerStyle;
+
+    classDef endStyle stroke:#333,stroke-width:2px;
+    class Update endStyle;
 ```
 
 > The DFD visualizes the flow of data and interactions between the user, AI models, and project files across the two scenarios.
