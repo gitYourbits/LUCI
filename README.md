@@ -66,24 +66,24 @@ The architecture combines three AI models:
 
 ```mermaid
 graph TD
-    User-Input --> Watcher-(Model-1)
-    B --> C
-    C --> D
-    D --> E
+    User-Input --> Watcher-(Model-2)
+    Watcher-(Model-2) --> LLaMA-(Model-1)
+    LLaMA-(Model-1) --> Controller-(Model-3)
+    Controller-(Model-3) --> Frontend-Update
     
-    A1--> C
-    C --> D1
-    D1 --> B1
-    B1 --> B
-    B --> E
-
-    class A,A1 startStyle;
-    class B,C,D,D1,B1 processStyle;
-    class E endStyle;
+    User-Input-(Mid-Journey) --> LLaMA-(Model-1)
+    LLaMA-(Model-1) --> Controller-(Model-3)
+    Controller-(Model-3) --> Watcher-(Model-2)
+    Watcher-(Model-2) --> LLaMA-(Model-1)
+    LLaMA-(Model-1) --> Controller-(Model-3)
+    Controller-(Model-3) --> Frontend-Update
 
     classDef startStyle stroke:#333,stroke-width:2px;
+    class User-Input,User-Input-(Mid-Journey);
     classDef processStyle stroke:#333,stroke-width:2px;
+    class Watcher-(Model-2),LLaMA-(Model-1),Controller-(Model-3) processStyle;
     classDef endStyle stroke:#333,stroke-width:2px;
+    class Frontend-Update endStyle;
 ```
 
 > The DFD visualizes the flow of data and interactions between the user, AI models, and project files across the two scenarios.
