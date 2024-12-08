@@ -66,7 +66,7 @@ The architecture combines three AI models:
 
 ```mermaid
 graph TD
-    User Input --> Watcher (Model 1)
+    User-Input --> Watcher-(Model-1)
     B --> C
     C --> D
     D --> E
