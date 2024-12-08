@@ -76,13 +76,13 @@ graph TD
     end
 
     subgraph Scenario2 [Mid-Journey Prompt]
-        UserInput-MidJourney --> LLaMA
-        LLaMA --> Controller
-        Controller --> Watcher
-        Watcher --> LLaMA
-        LLaMA --> Watcher
-        Watcher --> Controller
-        Controller --> Update
+        UserInput-MidJourney -->|Step 7: Mid-Journey Input| LLaMA
+        LLaMA -->|Step 8: Decision Making by Controller| Controller
+        Controller -->|Step 9: Controller Navigates to Watcher| Watcher
+        Watcher -->|Step 10: Feedback Loop to LLaMAModel1| LLaMA
+        LLaMA -->|Step 11: Feedback to Watcher| Watcher
+        Watcher -->|Step 12: Final Controller Decision| Controller
+        Controller -->|Step 13: Frontend Update| Update
     end
 
     %% Adding descriptions to the arrows
@@ -92,14 +92,6 @@ graph TD
     LLaMA-Model1 -->|4. CodeChange Recommendations| Watcher-Model2
     Watcher-Model2 -->|5. Recommendation DropPoint Detection| Controller-Model3
     Controller-Model3 -->|6. Updation| Update
-
-    UserInput-MidJourney -->|Step 7: Mid-Journey Input| LLaMA
-    LLaMA -->|Step 8: Decision Making by Controller| Controller
-    Controller -->|Step 9: Controller Navigates to Watcher| Watcher
-    Watcher -->|Step 10: Feedback Loop to LLaMAModel1| LLaMA
-    LLaMA -->|Step 11: Feedback to Watcher| Watcher
-    Watcher -->|Step 12: Final Controller Decision| Controller
-    Controller -->|Step 13: Frontend Update| Update
 
     classDef startStyle stroke:#333,stroke-width:2px;
     class UserInput-Initial,UserInput-MidJourney startStyle;
