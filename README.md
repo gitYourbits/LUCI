@@ -85,6 +85,22 @@ graph TD
         Controller -->|1. Initial Input| Update
     end
 
+    %% Adding descriptions to the arrows
+    UserInputInitial -->|Step 1: Initial Input| LLaMAModel1
+    LLaMAModel1 -->|Step 2: Model 1 Processing| WatcherModel2
+    WatcherModel2 -->|Step 3: Watcher Model 2 Feedback| LLaMAModel1
+    LLaMAModel1 -->|Step 4: Adjustments by Model 1| WatcherModel2
+    WatcherModel2 -->|Step 5: Controller Decision| ControllerModel3
+    ControllerModel3 -->|Step 6: Frontend Update| Update
+
+    UserInputMidJourney -->|Step 7: Mid-Journey Input| LLaMA
+    LLaMA -->|Step 8: Decision Making by Controller| Controller
+    Controller -->|Step 9: Controller Navigates to Watcher| Watcher
+    Watcher -->|Step 10: Feedback Loop to LLaMAModel1| LLaMAModel1
+    LLaMAModel1 -->|Step 11: Feedback to Watcher| Watcher
+    Watcher -->|Step 12: Final Controller Decision| Controller
+    Controller -->|Step 13: Frontend Update| Update
+
     classDef startStyle stroke:#333,stroke-width:2px;
     class UserInput-Initial,UserInput-MidJourney startStyle;
 
