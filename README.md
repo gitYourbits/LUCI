@@ -67,22 +67,22 @@ The architecture combines three AI models:
 ```mermaid
 graph TD
     subgraph Scenario1 [Initial Prompt]
-        UserInput-Initial --> LLaMA-Model1
-        LLaMA-Model1 --> Watcher-Model2
-        Watcher-Model2 --> LLaMA-Model1
-        LLaMA-Model1 --> Watcher-Model2
-        Watcher-Model2 --> Controller-Model3
-        Controller-Model3 --> Update
+        UserInput-Initial -->|1. Initial Prompt| LLaMA-Model1
+        LLaMA-Model1 -->|2. Decision Making and Corresponding Location Detection| Watcher-Model2
+        Watcher-Model2 -->|3. CodeBase Reading | LLaMA-Model1
+        LLaMA-Model1 -->|4. CodeChange Recommendations| Watcher-Model2
+        Watcher-Model2 -->|5. Recommendation DropPoint Detection| Controller-Model3
+        Controller-Model3 -->|6. Updation| Update
     end
 
     subgraph Scenario2 [Mid-Journey Prompt]
-        UserInput-MidJourney --> LLaMA
-        LLaMA --> Controller
-        Controller --> Watcher
-        Watcher --> LLaMA
-        LLaMA --> Watcher
-        Watcher --> Controller
-        Controller --> Update
+        UserInput-MidJourney -->|1. Initial Input| LLaMA
+        LLaMA -->|1. Initial Input| Controller
+        Controller -->|1. Initial Input| Watcher
+        Watcher -->|1. Initial Input| LLaMA
+        LLaMA -->|1. Initial Input| Watcher
+        Watcher -->|1. Initial Input| Controller
+        Controller -->|1. Initial Input| Update
     end
 
     classDef startStyle stroke:#333,stroke-width:2px;
