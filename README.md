@@ -67,12 +67,12 @@ The architecture combines three AI models:
 ```mermaid
 graph TD
     subgraph Scenario1 [Initial Prompt]
-        UserInput-Initial -->|Step 1: Initial Prompt| LLaMA-(Model1)
-        LLaMA-(Model1) -->|Step 2: Decision Making| Watcher-(Model2)
-        Watcher-(Model2) -->|Step 3: CodeBase Reading| LLaMA-(Model1)
-        LLaMA-(Model1) -->|Step 4: CodeChange Recommendations| Watcher-(Model2)
-        Watcher-(Model2) -->|Step 5: DropPoint Co-ordinate Detection| Controller-(Model3)
-        Controller-(Model3) -->|Step 6: Updation| Update
+        UserInput-Initial -->|Step 1: Initial Prompt| LLaMA-Model1
+        LLaMA-Model1 -->|Step 2: Decision Making| Watcher-Model2
+        Watcher-Model2 -->|Step 3: CodeBase Reading| LLaMA-Model1
+        LLaMA-Model1 -->|Step 4: CodeChange Recommendations| Watcher-Model2
+        Watcher-Model2 -->|Step 5: DropPoint Co-ordinate Detection| Controller-Model3
+        Controller-Model3 -->|Step 6: Updation| Update
     end
 
     subgraph Scenario2 [Mid-Journey Prompt]
@@ -89,13 +89,13 @@ graph TD
     class UserInput-Initial,UserInput-MidJourney startStyle;
 
     classDef llamaStyle stroke:#333,stroke-width:2px;
-    class LLaMA-(Model1),LLaMA llamaStyle;
+    class LLaMA-Model1,LLaMA llamaStyle;
 
     classDef watcherStyle stroke:#333,stroke-width:2px;
-    class Watcher-(Model2),Watcher watcherStyle;
+    class Watcher-Model2,Watcher watcherStyle;
 
     classDef controllerStyle stroke:#333,stroke-width:2px;
-    class Controller-(Model3),Controller controllerStyle;
+    class Controller-Model3,Controller controllerStyle;
 
     classDef endStyle stroke:#333,stroke-width:2px;
     class Update endStyle;
@@ -108,7 +108,6 @@ graph TD
 ## **How It Works**
 
 ### **The High-Level Approach**
-
 1. **Decision-Making with LLM:**  
    - Use the LLM to decide **what action to take** based on high-level commands.
    - Example: 
