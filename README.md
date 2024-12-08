@@ -66,22 +66,23 @@ The architecture combines three AI models:
 
 ```mermaid
 graph TD
-    User-Input --> Watcher-(Model-2)
-    Watcher-(Model-2) --> LLaMA-(Model-1)
-    LLaMA-(Model-1) --> Controller-(Model-3)
-    Controller-(Model-3) --> Frontend-Update
+    User-Input --> LLaMA-Model1
+    LLaMA-Model1 --> Watcher-Model2
+    Watcher-Model2 --> LLaMA-Model1
+    LLaMA-Model1 --> Controller-Model3
+    Controller-Model3 --> Frontend-Update
     
-    User-Input-(Mid-Journey) --> LLaMA-(Model-1)
-    LLaMA-(Model-1) --> Controller-(Model-3)
-    Controller-(Model-3) --> Watcher-(Model-2)
-    Watcher-(Model-2) --> LLaMA-(Model-1)
-    LLaMA-(Model-1) --> Controller-(Model-3)
-    Controller-(Model-3) --> Frontend-Update
+    User-Input-MidJourney --> LLaMA-Model1
+    LLaMA-Model1 --> Controller-Model3
+    Controller-Model3 --> Watcher-Model2
+    Watcher-Model2 --> LLaMA-Model1
+    LLaMA-Model1 --> Controller-Model3
+    Controller-Model3 --> Frontend-Update
 
     classDef startStyle stroke:#333,stroke-width:2px;
-    class User-Input,User-Input-(Mid-Journey);
+    class User-Input,User-Input-MidJourney;
     classDef processStyle stroke:#333,stroke-width:2px;
-    class Watcher-(Model-2),LLaMA-(Model-1),Controller-(Model-3) processStyle;
+    class LLaMA-Model1,Watcher-Model2,Controller-Model3 processStyle;
     classDef endStyle stroke:#333,stroke-width:2px;
     class Frontend-Update endStyle;
 ```
