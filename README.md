@@ -67,16 +67,16 @@ The architecture combines three AI models:
 ```mermaid
 graph TD
     subgraph Scenario1 [Initial Prompt]
-        UserInputInitial --> LLaMAModel1
-        LLaMAModel1 --> WatcherModel2
-        WatcherModel2 --> LLaMAModel1
-        LLaMAModel1 --> WatcherModel2
-        WatcherModel2 --> ControllerModel3
-        ControllerModel3 --> Update
+        UserInput-Initial --> LLaMA-Model1
+        LLaMA-Model1 --> Watcher-Model2
+        Watcher-Model2 --> LLaMA-Model1
+        LLaMA-Model1 --> Watcher-Model2
+        Watcher-Model2 --> Controller-Model3
+        Controller-Model3 --> Update
     end
 
     subgraph Scenario2 [Mid-Journey Prompt]
-        UserInputMidJourney --> LLaMA
+        UserInput-MidJourney --> LLaMA
         LLaMA --> Controller
         Controller --> Watcher
         Watcher --> LLaMA
@@ -86,16 +86,16 @@ graph TD
     end
 
     classDef startStyle stroke:#333,stroke-width:2px;
-    class UserInputInitial,UserInputMidJourney startStyle;
+    class UserInput-Initial,UserInput-MidJourney startStyle;
 
-    classDef llamaStyle fill:#f9f,stroke:#333,stroke-width:2px;
-    class LLaMAModel1,LLaMA llamaStyle;
+    classDef llamaStyle stroke:#333,stroke-width:2px;
+    class LLaMA-Model1,LLaMA llamaStyle;
 
-    classDef watcherStyle fill:#bbf,stroke:#333,stroke-width:2px;
-    class WatcherModel2,Watcher watcherStyle;
+    classDef watcherStyle stroke:#333,stroke-width:2px;
+    class Watcher-Model2,Watcher watcherStyle;
 
-    classDef controllerStyle fill:#bff,stroke:#333,stroke-width:2px;
-    class ControllerModel3,Controller controllerStyle;
+    classDef controllerStyle stroke:#333,stroke-width:2px;
+    class Controller-Model3,Controller controllerStyle;
 
     classDef endStyle stroke:#333,stroke-width:2px;
     class Update endStyle;
