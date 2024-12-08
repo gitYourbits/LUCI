@@ -84,7 +84,7 @@ graph TD
     classDef startStyle fill:#f9f,stroke:#333,stroke-width:2px;
     classDef processStyle fill:#bbf,stroke:#333,stroke-width:2px;
     classDef endStyle fill:#bfb,stroke:#333,stroke-width:2px;
-
+```
 
 > The DFD visualizes the flow of data and interactions between the user, AI models, and project files across the two scenarios.
 
