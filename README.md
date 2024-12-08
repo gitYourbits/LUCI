@@ -76,13 +76,13 @@ graph TD
     end
 
     subgraph Scenario2 [Mid-Journey Prompt]
-        UserInput-MidJourney -->|Step 7: Mid-Journey Prompt| LLaMA
-        LLaMA -->|Step 8: Decision Making by Controller| Controller
-        Controller -->|Step 9: Controller Navigates to Watcher| Watcher
-        Watcher -->|Step 10: Feedback Loop to LLaMAModel1| LLaMA
-        LLaMA -->|Step 11: Feedback to Watcher| Watcher
-        Watcher -->|Step 12: Final Controller Decision| Controller
-        Controller -->|Step 13: Frontend Update| Update
+        UserInput-MidJourney -->|Step 1: Mid-Journey Prompt| LLaMA
+        LLaMA -->|Step 2: Decision Making and Target File Navigation| Controller
+        Controller -->|Step 3: CodeBase Reading| Watcher
+        Watcher -->|Step 4: Memory Updation| LLaMA
+        LLaMA -->|Step 5: Recommendations| Watcher
+        Watcher -->|Step 6: DropPoint Detection| Controller
+        Controller -->|Step 7: Updation| Update
     end
 
     classDef startStyle stroke:#333,stroke-width:2px;
