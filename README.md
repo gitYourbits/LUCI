@@ -96,8 +96,8 @@ graph TD
     UserInput-MidJourney -->|Step 7: Mid-Journey Input| LLaMA
     LLaMA -->|Step 8: Decision Making by Controller| Controller
     Controller -->|Step 9: Controller Navigates to Watcher| Watcher
-    Watcher -->|Step 10: Feedback Loop to LLaMAModel1| LLaMAModel1
-    LLaMAModel1 -->|Step 11: Feedback to Watcher| Watcher
+    Watcher -->|Step 10: Feedback Loop to LLaMAModel1| LLaMA
+    LLaMA -->|Step 11: Feedback to Watcher| Watcher
     Watcher -->|Step 12: Final Controller Decision| Controller
     Controller -->|Step 13: Frontend Update| Update
 
