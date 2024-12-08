@@ -67,33 +67,33 @@ The architecture combines three AI models:
 ```mermaid
 graph TD
     subgraph Scenario1 [Initial Prompt]
-        UserInput-Initial -->|1. Initial Prompt| LLaMA-Model1
-        LLaMA-Model1 -->|2. Decision Making and Corresponding Location Detection| Watcher-Model2
-        Watcher-Model2 -->|3. CodeBase Reading | LLaMA-Model1
-        LLaMA-Model1 -->|4. CodeChange Recommendations| Watcher-Model2
-        Watcher-Model2 -->|5. Recommendation DropPoint Detection| Controller-Model3
-        Controller-Model3 -->|6. Updation| Update
+        UserInput-Initial --> LLaMA-Model1
+        LLaMA-Model1 --> Watcher-Model2
+        Watcher-Model2 --> LLaMA-Model1
+        LLaMA-Model1 --> Watcher-Model2
+        Watcher-Model2 --> Controller-Model3
+        Controller-Model3 --> Update
     end
 
     subgraph Scenario2 [Mid-Journey Prompt]
-        UserInput-MidJourney -->|1. Initial Input| LLaMA
-        LLaMA -->|1. Initial Input| Controller
-        Controller -->|1. Initial Input| Watcher
-        Watcher -->|1. Initial Input| LLaMA
-        LLaMA -->|1. Initial Input| Watcher
-        Watcher -->|1. Initial Input| Controller
-        Controller -->|1. Initial Input| Update
+        UserInput-MidJourney --> LLaMA
+        LLaMA --> Controller
+        Controller --> Watcher
+        Watcher --> LLaMA
+        LLaMA --> Watcher
+        Watcher --> Controller
+        Controller --> Update
     end
 
     %% Adding descriptions to the arrows
-    UserInputInitial -->|Step 1: Initial Input| LLaMAModel1
-    LLaMAModel1 -->|Step 2: Model 1 Processing| WatcherModel2
-    WatcherModel2 -->|Step 3: Watcher Model 2 Feedback| LLaMAModel1
-    LLaMAModel1 -->|Step 4: Adjustments by Model 1| WatcherModel2
-    WatcherModel2 -->|Step 5: Controller Decision| ControllerModel3
-    ControllerModel3 -->|Step 6: Frontend Update| Update
+    UserInput-Initial -->|1. Initial Prompt| LLaMA-Model1
+    LLaMA-Model1 -->|2. Decision Making and Corresponding Location Detection| Watcher-Model2
+    Watcher-Model2 -->|3. CodeBase Reading | LLaMA-Model1
+    LLaMA-Model1 -->|4. CodeChange Recommendations| Watcher-Model2
+    Watcher-Model2 -->|5. Recommendation DropPoint Detection| Controller-Model3
+    Controller-Model3 -->|6. Updation| Update
 
-    UserInputMidJourney -->|Step 7: Mid-Journey Input| LLaMA
+    UserInput-MidJourney -->|Step 7: Mid-Journey Input| LLaMA
     LLaMA -->|Step 8: Decision Making by Controller| Controller
     Controller -->|Step 9: Controller Navigates to Watcher| Watcher
     Watcher -->|Step 10: Feedback Loop to LLaMAModel1| LLaMAModel1
