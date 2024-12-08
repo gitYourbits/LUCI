@@ -97,6 +97,7 @@ graph TD
     class LLaMAModel1,WatcherModel2,ControllerModel3 processStyle;
     classDef endStyle stroke:#333,stroke-width:2px;
     class FrontendUpdate endStyle;
+
 ```
 
 > The DFD visualizes the flow of data and interactions between the user, AI models, and project files across the two scenarios.
