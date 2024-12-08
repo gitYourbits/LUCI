@@ -5,11 +5,11 @@ LLM Unified Controller In-person. LUCIfer, the potential job eater.
 # **Project LUCI: AI-Assisted Project Development Platform**
 
 ## **Overview**
-Project LUCI is an innovative desktop platform designed to revolutionize project development through AI-assisted automation and intelligent decision-making. It allows users to create, manage, and optimize projects using AI instances with memory, vision, and automation capabilities. Each project is treated as a standalone entity, ensuring tailored assistance.
+Project LUCI is an innovative web platform designed to revolutionize project development through AI-assisted automation and intelligent decision-making. It allows users to create, manage, and optimize projects using AI instances with memory, vision, and automation capabilities. Each project is treated as a standalone entity, ensuring tailored assistance.
 
 The system integrates:
-1. **Code understanding and context detection** (Watcher - Model 1).
-2. **Decision-making and task decomposition** (LLaMA - Model 2).
+1. **Decision-making and task decomposition** (LLaMA - Model 1).
+2. **Code understanding and context detection** (Watcher - Model 2).
 3. **Automation and control** (Controller - Model 3).
 
 ## **Key Features**
@@ -64,37 +64,55 @@ The architecture combines three AI models:
 
 ## **High-Level Data Flow Diagram (DFD)**
 
-![High-Level DFD](./diagrams/high-level-dfd.png)
+```mermaid
+graph TD
+    A[User Input] --> B[Watcher (Model 1)]
+    B --> C[LLaMA (Model 2)]
+    C --> D[Controller (Model 3)]
+    D --> E[Frontend Update]
+    
+    A1[User Input (Mid-Journey)] --> C
+    C --> D1[Controller Navigates to Required File]
+    D1 --> B1[Watcher Reads File I/O]
+    B1 --> B
+    B --> E
+
+    classDef startStyle fill:#f9f,stroke:#333,stroke-width:2px;
+    class A,A1 startStyle;
+    classDef processStyle fill:#bbf,stroke:#333,stroke-width:2px;
+    class B,C,D,D1,B1 processStyle;
+    classDef endStyle fill:#bfb,stroke:#333,stroke-width:2px;
+    class E endStyle;
+```
 
 > The DFD visualizes the flow of data and interactions between the user, AI models, and project files across the two scenarios.
 
 ---
 
 ## **How It Works**
+
+### **The High-Level Approach**
+To overcome these challenges, you can integrate an LLM with a **perception model** (computer vision) and an **action model** (automation tools):
+
+1. **Decision-Making with LLM:**  
+   - Use the LLM to decide **what action to take** based on high-level commands.
+   - Example: 
+     - Input: "I want to compose an email."
+     - LLM Output: "Locate the 'Compose' button and click on it."
+
+2. **Screen Understanding with Computer Vision:**  
+   - Use a vision model (e.g., YOLO) to locate UI elements like buttons, fields, or menus.
+
+3. **Action Execution:**  
+   - Pass the LLM's decision and the vision model's coordinates to an automation tool (e.g., PyAutoGUI) to perform the action.
+
+---
+
 1. **Create a Project**: Users initiate a project via the platform interface.
 2. **AI Instance Assignment**: Each project is assigned a dedicated AI instance with memory for personalized assistance.
 3. **Codebase Management**: Files and directories are managed dynamically based on user input and AI analysis.
 4. **Visual Understanding**: The system integrates computer vision for better understanding of diagrams, UI, and workflows.
 5. **Project Execution**: AI instances automate file operations, generate new code, and optimize existing workflows.
-
----
-
-## **Getting Started**
-### **Requirements**
-- **Hardware**: A system with a capable GPU for running AI models locally.
-- **Dependencies**: Python 3.8+, PyTorch, TensorFlow, OpenCV, and LLaMA models.
-
-### **Installation**
-```bash
-git clone https://github.com/username/project-luci.git
-cd project-luci
-pip install -r requirements.txt
-```
-
-### **Running the Application**
-```bash
-python app.py
-```
 
 ---
 
