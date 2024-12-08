@@ -24,10 +24,10 @@ The system integrates:
 
 ### **Scenario 1: Starting a New Project or Sub-Part**
 1. **User Input**: The user provides a prompt describing the desired feature or project section.
-2. **Watcher (Model 1)**:
+2. **Watcher (Model 2)**:
    - Reads the codebase and gathers contextual information using computer vision.
    - Detects files, directories, and coordinates for operation.
-3. **LLaMA (Model 2)**:
+3. **LLaMA (Model 1)**:
    - Processes input and context to make decisions.
    - Generates required code, documentation, or workflows.
 4. **Controller (Model 3)**:
@@ -40,11 +40,11 @@ The system integrates:
 
 ### **Scenario 2: Mid-Journey Assistance**
 1. **User Input**: The user initiates a prompt expecting the system to understand the existing workflow.
-2. **LLaMA (Model 2)**:
+2. **LLaMA (Model 1)**:
    - Deciphers the context from memory or database.
 3. **Controller (Model 3)**:
    - Navigates to the relevant part of the project (e.g., files, code section).
-4. **Watcher (Model 1)**:
+4. **Watcher (Model 2)**:
    - Reads file I/O, text content, and coordinates.
    - Detects areas requiring modification or additional updates.
 5. **Scenario 1 Workflow**:
@@ -56,8 +56,8 @@ The system integrates:
 
 ## **System Architecture**
 The architecture combines three AI models:
-- **Model 1 (Watcher)**: Detects and reads codebases, coordinates, and visual data using computer vision.
-- **Model 2 (LLaMA)**: Acts as the decision-making core, leveraging natural language understanding and reasoning.
+- **Model 1 (LLaMA)**: Acts as the decision-making core, leveraging natural language understanding and reasoning.
+- **Model 2 (Watcher)**: Detects and reads codebases, coordinates, and visual data using computer vision.
 - **Model 3 (Controller)**: Automates tasks, navigates files, and ensures seamless updates.
 
 ---
@@ -67,12 +67,12 @@ The architecture combines three AI models:
 ```mermaid
 graph TD
     subgraph Scenario1 [Initial Prompt]
-        UserInput-Initial -->|Step 1: Initial Prompt| LLaMA-Model1
-        LLaMA-Model1 -->|Step 2: Decision Making| Watcher-Model2
-        Watcher-Model2 -->|Step 3: CodeBase Reading| LLaMA-Model1
-        LLaMA-Model1 -->|Step 4: CodeChange Recommendations| Watcher-Model2
-        Watcher-Model2 -->|Step 5: DropPoint Co-ordinate Detection| Controller-Model3
-        Controller-Model3 -->|Step 6: Updation| Update
+        UserInput-Initial -->|Step 1: Initial Prompt| LLaMA-(Model1)
+        LLaMA-(Model1) -->|Step 2: Decision Making| Watcher-(Model2)
+        Watcher-(Model2) -->|Step 3: CodeBase Reading| LLaMA-(Model1)
+        LLaMA-(Model1) -->|Step 4: CodeChange Recommendations| Watcher-(Model2)
+        Watcher-(Model2) -->|Step 5: DropPoint Co-ordinate Detection| Controller-(Model3)
+        Controller-(Model3) -->|Step 6: Updation| Update
     end
 
     subgraph Scenario2 [Mid-Journey Prompt]
@@ -89,13 +89,13 @@ graph TD
     class UserInput-Initial,UserInput-MidJourney startStyle;
 
     classDef llamaStyle stroke:#333,stroke-width:2px;
-    class LLaMA-Model1,LLaMA llamaStyle;
+    class LLaMA-(Model1),LLaMA llamaStyle;
 
     classDef watcherStyle stroke:#333,stroke-width:2px;
-    class Watcher-Model2,Watcher watcherStyle;
+    class Watcher-(Model2),Watcher watcherStyle;
 
     classDef controllerStyle stroke:#333,stroke-width:2px;
-    class Controller-Model3,Controller controllerStyle;
+    class Controller-(Model3),Controller controllerStyle;
 
     classDef endStyle stroke:#333,stroke-width:2px;
     class Update endStyle;
@@ -108,7 +108,6 @@ graph TD
 ## **How It Works**
 
 ### **The High-Level Approach**
-To overcome these challenges, you can integrate an LLM with a **perception model** (computer vision) and an **action model** (automation tools):
 
 1. **Decision-Making with LLM:**  
    - Use the LLM to decide **what action to take** based on high-level commands.
