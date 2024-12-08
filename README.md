@@ -57,7 +57,7 @@ The system integrates:
 ## **System Architecture**
 The architecture combines three AI models:
 - **Model 1 (LLaMA)**: Acts as the decision-making core, leveraging natural language understanding and reasoning.
-- **Model 2 (Watcher)**: Detects and reads codebases, coordinates, and visual data using computer vision.
+- **Model 2 (Watcher)**: Detects and reads codebases, coordinates, and visual data using computer vision and file I/O.
 - **Model 3 (Controller)**: Automates tasks, navigates files, and ensures seamless updates.
 
 ---
