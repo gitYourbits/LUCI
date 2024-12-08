@@ -65,15 +65,15 @@ The architecture combines three AI models:
 ## **High-Level Data Flow Diagram (DFD)**
 
 ```mermaid
-graph TD;
-    A --> B;
-    B --> C[LLaMA (Model 2)];
-    C --> D[Controller (Model 3)];
-    D --> E[Frontend Update];
+graph TD
+    A --> B
+    B --> C
+    C --> D
+    D --> E
     
-    A1[User Input (Mid-Journey)] --> C
-    C --> D1[Controller Navigates to Required File]
-    D1 --> B1[Watcher Reads File I/O]
+    A1--> C
+    C --> D1
+    D1 --> B1
     B1 --> B
     B --> E
 
