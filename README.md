@@ -76,7 +76,7 @@ graph TD
     end
 
     subgraph Scenario2 [Mid-Journey Prompt]
-        UserInput-MidJourney -->|Step 7: Mid-Journey Input| LLaMA
+        UserInput-MidJourney -->|Step 7: Mid-Journey Prompt| LLaMA
         LLaMA -->|Step 8: Decision Making by Controller| Controller
         Controller -->|Step 9: Controller Navigates to Watcher| Watcher
         Watcher -->|Step 10: Feedback Loop to LLaMAModel1| LLaMA
