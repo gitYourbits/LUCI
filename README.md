@@ -120,8 +120,7 @@ graph TD
 3. **Action Execution:**  
    - Pass the LLM's decision and the vision model's coordinates to an automation tool (e.g., PyAutoGUI) to perform the action.
 
----
-
+## **Featuring**
 1. **Create a Project**: Users initiate a project via the platform interface.
 2. **AI Instance Assignment**: Each project is assigned a dedicated AI instance with memory for personalized assistance.
 3. **Codebase Management**: Files and directories are managed dynamically based on user input and AI analysis.
