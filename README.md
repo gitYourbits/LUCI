@@ -66,25 +66,35 @@ The architecture combines three AI models:
 
 ```mermaid
 graph TD
-    UserInput-Initial --> LLaMA(Model1)
-    LLaMA(Model1) --> Watcher(Model2)
-    Watcher(Model2) --> LLaMA(Model1)
-    LLaMA(Model1) --> Watcher(Model2)
-    Watcher(Model2) --> Controller(Model3)
-    Controller(Model3) --> FrontendUpdate
+    UserInputInitial --> LLaMAModel1
+    LLaMAModel1 --> WatcherModel2
+    WatcherModel2 --> LLaMAModel1
+    LLaMAModel1 --> WatcherModel2
+    WatcherModel2 --> ControllerModel3
+    ControllerModel3 --> FrontendUpdate
     
-    UserInput-MidJourney --> LLaMA
-    LLaMA --> Controller
-    Controller --> Watcher
-    Watcher --> LLaMA
-    LLaMA --> Watcher
-    Watcher --> Controller
-    Controller --> FrontendUpdate
+    classDef startStyle stroke:#333,stroke-width:2px;
+    class UserInputInitial startStyle;
+    classDef processStyle stroke:#333,stroke-width:2px;
+    class LLaMAModel1,WatcherModel2,ControllerModel3 processStyle;
+    classDef endStyle stroke:#333,stroke-width:2px;
+    class FrontendUpdate endStyle;
+
+%% Scenario 1 end
+
+graph TD
+    UserInputMidJourney --> LLaMAModel1
+    LLaMAModel1 --> ControllerModel3
+    ControllerModel3 --> WatcherModel2
+    WatcherModel2 --> LLaMAModel1
+    LLaMAModel1 --> WatcherModel2
+    WatcherModel2 --> ControllerModel3
+    ControllerModel3 --> FrontendUpdate
 
     classDef startStyle stroke:#333,stroke-width:2px;
-    class UserInput,UserInput-MidJourney startStyle;
+    class UserInputMidJourney startStyle;
     classDef processStyle stroke:#333,stroke-width:2px;
-    class LLaMA(Model1),Watcher(Model2),Controller(Model3) processStyle;
+    class LLaMAModel1,WatcherModel2,ControllerModel3 processStyle;
     classDef endStyle stroke:#333,stroke-width:2px;
     class FrontendUpdate endStyle;
 ```
