@@ -1,1 +1,21 @@
+# Virtual environment
 env
+
+# LUCI state file
+luci_state.json
+
+# Python egg info
+*.egg-info
+
+# Build and dist directories
+build
+dist
+
+# Docker or other tool-related
+*.log
+*.pid
+*.sock
+
+# Python bytecode
+__pycache__/
+*.py[cod]
