@@ -17,11 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from memory.views import update_memory
-from controller.views import open_project
+from controller.views import getProject
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/memory/update/', update_memory, name="update_memory"),
-    # path('api/controller/open/', open_project, name="open_project"),
+    path('api/controller/open/', getProject, name="open_project"),
 
 ]
